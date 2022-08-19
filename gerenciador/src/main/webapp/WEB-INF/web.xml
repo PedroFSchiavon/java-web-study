@@ -3,4 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
+    <servlet>
+        <servlet-name>NovaEmpresaServlet</servlet-name>
+        <servlet-class>br.com.alura.gerenciador.servelet.NovaEmpresaServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>OlaMundo</servlet-name>
+        <servlet-class>br.com.alura.gerenciador.servelet.OlaMundo</servlet-class>
+    </servlet>
 </web-app>
