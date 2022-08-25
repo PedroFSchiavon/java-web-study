@@ -1,5 +1,6 @@
 package br.com.alura.gerenciador.servelet;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,13 +20,10 @@ public class ListaEmpresa extends HttpServlet {
         Banco banco = new Banco();
         List<Empresa> lista = new ArrayList<>(banco.getLista());
 
-        PrintWriter out = response.getWriter();
-
-        out.println("<html><body>");
-        out.println("<ul>");
-        lista.forEach(empresa -> out.println("<li>" + empresa.getNome() + "</li>"));
-        out.println("</ul>");
-        out.println("</html></body>");
+        //Enviando para o JSP
+        RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
+        request.setAttribute("listaEmpresas", lista);
+        rd.forward(request, response);
     }
 
 }

@@ -1,5 +1,6 @@
 package br.com.alura.gerenciador.servelet;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,8 +23,11 @@ public class NovaEmpresaServlet extends HttpServlet {
 
         Banco banco = new Banco();
         banco.adiciona(empresa);
-        System.out.println("Empresa cadastrada com sucesso!");
+        System.out.println("Empresa cadastrada com sucesso!" + empresa.getNome());
 
-        out.println("<html><body>A empresa " + novaEmpresa + " foi cadastrada com sucesso!</body></html>");
+        //repassando para o JSP
+        RequestDispatcher rd = request.getRequestDispatcher("/novaEmpresaCriada.jsp");
+        request.setAttribute("empresa", empresa.getNome());
+        rd.forward(request, response);
     }
 }
