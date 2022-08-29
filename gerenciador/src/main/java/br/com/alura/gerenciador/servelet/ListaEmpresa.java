@@ -22,7 +22,7 @@ public class ListaEmpresa extends HttpServlet {
 
         //Enviando para o JSP
         RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
-        request.setAttribute("listaEmpresas", lista);
+        request.setAttribute("empresas", lista);
         rd.forward(request, response);
     }
 
