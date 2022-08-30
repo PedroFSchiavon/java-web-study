@@ -30,7 +30,17 @@ public class Banco {
 //                .findFirst();
 //        Empresa empresaARemover = first.orElse(null);
 //        System.out.println("Removendo empresa " + empresaARemover.getNome() + "!");
-        Banco.lista.removeIf(empresa -> Objects.equals(empresa.getId(), id));
         //Banco.lista.remove(empresaARemover);
+
+        Banco.lista.removeIf(empresa -> Objects.equals(empresa.getId(), id));
+    }
+
+    public void editaEmpresa(Integer id, String nome, Date data){
+        Banco.lista.forEach(empresa -> {
+            if(Objects.equals(empresa.getId(), id)){
+                empresa.setNome(nome);
+                empresa.setDataCriacao(data);
+            }
+        });
     }
 }
