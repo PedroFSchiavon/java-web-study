@@ -10,7 +10,7 @@
     <form action="${pathNovaEmpresa}" method="post">
         Nome: <input type="text" name="nome" />
         Data Criação: <input type="text" name="data">
-        <input type="submit" />
+        <input type="submit" value="Enviar"/>
     </form>
 </body>
 </html>

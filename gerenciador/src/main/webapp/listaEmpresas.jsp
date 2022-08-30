@@ -10,13 +10,18 @@ Created by IntelliJ IDEA.
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<body>
+    <c:if test="${not empty empresa}">
+        A empresa ${empresa} foi criada com sucesso!
+    </c:if>
+    Lista de empresas: <br />
+    <c:forEach items="${empresas}" var="empresa">
+        <c:url value="/removeempresa?id=${empresa.id}" var="pathRemoveEmpresa" />
+        <li>${empresa.nome} - <fmt:formatDate value="${empresa.dataCriacao}" pattern="dd/MM/yyyy"/>
+            <a href="${pathRemoveEmpresa}"> remover</a> </li>
+    </c:forEach>
+</body>
 <head>
     <title>Lista de empresas</title>
 </head>
-<body>
-    Lista de empresas: <br />
-    <c:forEach items="${empresas}" var="empresa">
-        <li>${empresa.nome} - <fmt:formatDate value="${empresa.dataCriacao}" pattern="dd/MM/yyyy"/></li>
-    </c:forEach>
-</body>
 </html>

@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -30,17 +29,19 @@ public class NovaEmpresaServlet extends HttpServlet {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
-
+        empresa.setId(Empresa.getIdIncrementavel());
         empresa.setNome(novaEmpresa);
         empresa.setDataCriacao(dataCriacao);
 
         Banco banco = new Banco();
         banco.adiciona(empresa);
-        System.out.println("Empresa cadastrada com sucesso!" + empresa.getNome());
+        System.out.println("Empresa cadastrada com sucesso!" + empresa.getNome() + "ID: " + empresa.getId());
 
-        //repassando para o JSP
-        RequestDispatcher rd = request.getRequestDispatcher("/novaEmpresaCriada.jsp");
         request.setAttribute("empresa", empresa.getNome());
-        rd.forward(request, response);
+        response.sendRedirect("listaempresa");
+//        //repassando para o JSP
+//        RequestDispatcher rd = request.getRequestDispatcher("/listaempresa");
+//        request.setAttribute("empresa", empresa.getNome());
+//        rd.forward(request, response);
     }
 }

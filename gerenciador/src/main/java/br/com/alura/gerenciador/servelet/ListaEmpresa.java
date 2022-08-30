@@ -15,10 +15,10 @@ import java.util.List;
 @WebServlet(urlPatterns = "/listaempresa")
 public class ListaEmpresa extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Banco banco = new Banco();
-        List<Empresa> lista = new ArrayList<>(banco.getLista());
+        List<Empresa> lista = banco.getLista();
 
         //Enviando para o JSP
         RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
