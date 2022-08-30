@@ -34,9 +34,9 @@ public class Empresa {
     }
     
     public static Integer getIdIncrementavel(){
-        Integer idAtual = Empresa.idIncrementavel;
-        Empresa.idIncrementavel++;
-        return idAtual;
+//        Integer idAtual = Empresa.idIncrementavel;
+//        Empresa.idIncrementavel++;
+        return Empresa.idIncrementavel++;
     }
 
     @Override

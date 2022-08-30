@@ -16,7 +16,7 @@ public class RemoveEmpresa extends HttpServlet {
         System.out.println("Cheguei aqui, olha meu id = " + idParaRemover);
 
         Banco banco = new Banco();
-        banco.removeEmpresa(Integer.parseInt(idParaRemover));
+        banco.removeEmpresa(Integer.valueOf(idParaRemover));
 
         response.sendRedirect("listaempresa");
     }

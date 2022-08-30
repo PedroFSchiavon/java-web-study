@@ -25,11 +25,12 @@ public class Banco {
     }
 
     public void removeEmpresa(Integer id){
-        Optional<Empresa> first = Banco.lista.stream()
-                .filter(empresa -> Objects.equals(empresa.getId(), id))
-                .findFirst();
-        Empresa empresaARemover = first.orElse(null);
-        System.out.println("Removendo empresa " + empresaARemover.getNome() + "!");
-        Banco.lista.remove(empresaARemover);
+//        Optional<Empresa> first = Banco.lista.stream()
+//                .filter(empresa -> Objects.equals(empresa.getId(), id))
+//                .findFirst();
+//        Empresa empresaARemover = first.orElse(null);
+//        System.out.println("Removendo empresa " + empresaARemover.getNome() + "!");
+        Banco.lista.removeIf(empresa -> Objects.equals(empresa.getId(), id));
+        //Banco.lista.remove(empresaARemover);
     }
 }
