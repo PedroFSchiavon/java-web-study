@@ -1,5 +1,6 @@
 package br.com.alura.gerenciador.servelet;
 
+import br.com.alura.gerenciador.model.Banco;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

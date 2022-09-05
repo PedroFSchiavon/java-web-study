@@ -11,4 +11,8 @@
         <servlet-name>OlaMundo</servlet-name>
         <servlet-class>br.com.alura.gerenciador.servelet.OlaMundo</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UnicaEntradaServlet</servlet-name>
+        <servlet-class>br.com.alura.gerenciador.servelet.UnicaEntradaServlet</servlet-class>
+    </servlet>
 </web-app>

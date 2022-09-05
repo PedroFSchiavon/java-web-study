@@ -16,7 +16,7 @@ Created by IntelliJ IDEA.
     </c:if>
     Lista de empresas: <br />
     <c:forEach items="${empresas}" var="empresa">
-        <c:url value="/removeempresa?id=${empresa.id}" var="pathRemoveEmpresa" />
+        <c:url value="/entrada?id=${empresa.id}&action=remove-empresa" var="pathRemoveEmpresa" />
         <c:url value="/editaempresa?id=${empresa.id}" var="pathEditaEmpresa" />
         <li>${empresa.nome} - <fmt:formatDate value="${empresa.dataCriacao}" pattern="dd/MM/yyyy"/>
             <a href="${pathRemoveEmpresa}"> remover</a> | <a href="${pathEditaEmpresa}" > editar</a> </li>
