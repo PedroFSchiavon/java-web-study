@@ -7,7 +7,7 @@ public class Empresa {
     private static Integer idIncrementavel = 0;
     private Integer id;
     private String nome;
-    private Date dataCriacao;
+    private Date dataCriacao = new Date();
 
     public Integer getId() {
         return id;
@@ -50,5 +50,14 @@ public class Empresa {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Empresa{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", dataCriacao=" + dataCriacao +
+                '}';
     }
 }
