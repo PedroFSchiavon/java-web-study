@@ -1,7 +1,6 @@
 package br.com.alura.gerenciador.servelet;
 
-import br.com.alura.gerenciador.actions.ListaEmpresas;
-import br.com.alura.gerenciador.actions.RemoveEmpresa;
+import br.com.alura.gerenciador.actions.*;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -15,17 +14,24 @@ public class UnicaEntradaServlet extends HttpServlet {
 
         switch (paramAction) {
             case "lista-empresas":
-                System.out.println("listando empresas");
                 ListaEmpresas listaEmpresas = new ListaEmpresas();
                 listaEmpresas.listaEmpresa(request, response);
                 break;
             case "remove-empresa":
-                System.out.println("Removendo empresa");
                 RemoveEmpresa removeEmpresa = new RemoveEmpresa();
                 removeEmpresa.removeEmpresa(request, response);
                 break;
+            case "mostra-empresa":
+                MostraEmpresa mostraEmpresa = new MostraEmpresa();
+                mostraEmpresa.mostraEmpresa(request, response);
+                break;
+            case "edita-empresa":
+                EditaEmpresa editaEmpresa = new EditaEmpresa();
+                editaEmpresa.editaEmpresa(request, response);
+                break;
             case "nova-empresa":
-                System.out.println("Criando empresa");
+                NovaEmpresa novaEmpresa = new NovaEmpresa();
+                novaEmpresa.novaEmpresa(request, response);
                 break;
         }
     }

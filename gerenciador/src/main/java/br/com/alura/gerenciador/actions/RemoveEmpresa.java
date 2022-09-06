@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class RemoveEmpresa {
     public void removeEmpresa(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("Removendo empresa");
         String idParaRemover = request.getParameter("id");
         System.out.println("Cheguei aqui, olha meu id = " + idParaRemover);
 

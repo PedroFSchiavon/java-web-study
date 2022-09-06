@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-@WebServlet(urlPatterns = "/oi")
+//@WebServlet(urlPatterns = "/oi")
 public class OlaMundo extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException {

@@ -12,6 +12,7 @@ import java.util.List;
 
 public class ListaEmpresas {
     public void listaEmpresa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("listando empresas");
         Banco banco = new Banco();
         List<Empresa> lista = banco.getLista();
 

@@ -7,7 +7,7 @@
   Time: 14:16
   To change this template use File | Settings | File Templates.
 --%>
-<c:url value="editaempresa" var="pathEditaEmpresa" />
+<c:url value="entrada?action=edita-empresa&id=${id}" var="pathEditaEmpresa" />
 <fmt:formatDate value="${empresaData}" pattern="dd/MM/yyyy" var="dataFormatada" />
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>

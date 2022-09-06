@@ -16,7 +16,7 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.Optional;
 
-@WebServlet(urlPatterns = "/editaempresa")
+//@WebServlet(urlPatterns = "/editaempresa")
 public class EditaEmpresaServlet extends HttpServlet {
     Integer id = null;
     @Override
