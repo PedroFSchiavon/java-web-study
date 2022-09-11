@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class NovaEmpresa {
-    public void novaEmpresa(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String  novaEmpresa(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("Cadastrando nova empresa");
         String novaEmpresa = request.getParameter("nome");
         String paramDataCriacao = request.getParameter("data");
@@ -33,6 +33,6 @@ public class NovaEmpresa {
         banco.adiciona(empresa);
         System.out.println("Empresa cadastrada com sucesso!" + empresa.getNome() + "ID: " + empresa.getId());
 
-        response.sendRedirect("entrada?action=lista-empresas");
+        return "redirect:entrada?action=lista-empresas";
     }
 }

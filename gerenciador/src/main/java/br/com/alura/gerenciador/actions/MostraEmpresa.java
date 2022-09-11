@@ -12,7 +12,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class MostraEmpresa {
-    public void mostraEmpresa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String mostraEmpresa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("Mostrando dados da empresa");
         String idParameter = request.getParameter("id");
         Integer id = Integer.valueOf(idParameter);
@@ -24,11 +24,11 @@ public class MostraEmpresa {
                 .findFirst();
         Empresa empresa = first.orElse(null);
 
-        RequestDispatcher rd = request.getRequestDispatcher("/formEditaEmpresa.jsp");
         request.setAttribute("empresaNome", empresa.getNome());
         request.setAttribute("empresaData", empresa.getDataCriacao());
         request.setAttribute("id", id);
-        rd.forward(request, response);
+
+        return "forward:formEditaEmpresa.jsp";
 
     }
 }

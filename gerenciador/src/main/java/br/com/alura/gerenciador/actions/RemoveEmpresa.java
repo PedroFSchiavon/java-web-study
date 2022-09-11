@@ -7,7 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class RemoveEmpresa {
-    public void removeEmpresa(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String removeEmpresa(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("Removendo empresa");
         String idParaRemover = request.getParameter("id");
         System.out.println("Cheguei aqui, olha meu id = " + idParaRemover);
@@ -15,6 +15,7 @@ public class RemoveEmpresa {
         Banco banco = new Banco();
         banco.removeEmpresa(Integer.valueOf(idParaRemover));
 
-        response.sendRedirect("entrada?action=lista-empresas");
+
+        return "redirect:entrada?action=lista-empresas";
     }
 }

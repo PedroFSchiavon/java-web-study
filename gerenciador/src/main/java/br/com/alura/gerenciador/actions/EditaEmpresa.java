@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class EditaEmpresa {
-    public void editaEmpresa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public String editaEmpresa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("Editando empresa");
         String idParameter = request.getParameter("id");
         System.out.println("Olha o id: " + idParameter);
@@ -31,6 +31,7 @@ public class EditaEmpresa {
         Banco banco = new Banco();
         banco.editaEmpresa(id, nome, data);
 
-        response.sendRedirect("entrada?action=lista-empresas");
+
+        return "redirect:entrada?action=lista-empresas";
     }
 }
