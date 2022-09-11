@@ -2,7 +2,6 @@ package br.com.alura.gerenciador.actions;
 
 import br.com.alura.gerenciador.model.Banco;
 import br.com.alura.gerenciador.model.Empresa;
-import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -11,8 +10,8 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 
-public class MostraEmpresa {
-    public String mostraEmpresa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+public class MostraEmpresa implements Acao{
+    public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("Mostrando dados da empresa");
         String idParameter = request.getParameter("id");
         Integer id = Integer.valueOf(idParameter);

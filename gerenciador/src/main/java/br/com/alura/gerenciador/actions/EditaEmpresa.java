@@ -10,8 +10,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class EditaEmpresa {
-    public String editaEmpresa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+public class EditaEmpresa implements Acao{
+    public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("Editando empresa");
         String idParameter = request.getParameter("id");
         System.out.println("Olha o id: " + idParameter);
@@ -32,6 +32,6 @@ public class EditaEmpresa {
         banco.editaEmpresa(id, nome, data);
 
 
-        return "redirect:entrada?action=lista-empresas";
+        return "redirect:entrada?action=ListaEmpresas";
     }
 }

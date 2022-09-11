@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servelet;
+package br.com.alura.gerenciador.classesDepreciadas;
 
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

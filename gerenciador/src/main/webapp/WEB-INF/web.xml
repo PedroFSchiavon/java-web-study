@@ -5,14 +5,14 @@
          version="5.0">
     <servlet>
         <servlet-name>NovaEmpresaServlet</servlet-name>
-        <servlet-class>br.com.alura.gerenciador.servelet.NovaEmpresaServlet</servlet-class>
+        <servlet-class>br.com.alura.gerenciador.classesDepreciadas.NovaEmpresaServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>OlaMundo</servlet-name>
-        <servlet-class>br.com.alura.gerenciador.servelet.OlaMundo</servlet-class>
+        <servlet-class>br.com.alura.gerenciador.classesDepreciadas.OlaMundo</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UnicaEntradaServlet</servlet-name>
-        <servlet-class>br.com.alura.gerenciador.servelet.UnicaEntradaServlet</servlet-class>
+        <servlet-class>br.com.alura.gerenciador.servelet.Controller</servlet-class>
     </servlet>
 </web-app>

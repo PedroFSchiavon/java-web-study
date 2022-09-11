@@ -1,13 +1,14 @@
 package br.com.alura.gerenciador.actions;
 
 import br.com.alura.gerenciador.model.Banco;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-public class RemoveEmpresa {
-    public String removeEmpresa(HttpServletRequest request, HttpServletResponse response) throws IOException {
+public class RemoveEmpresa implements Acao{
+    public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("Removendo empresa");
         String idParaRemover = request.getParameter("id");
         System.out.println("Cheguei aqui, olha meu id = " + idParaRemover);
@@ -16,6 +17,6 @@ public class RemoveEmpresa {
         banco.removeEmpresa(Integer.valueOf(idParaRemover));
 
 
-        return "redirect:entrada?action=lista-empresas";
+        return "redirect:entrada?action=ListaEmpresas";
     }
 }

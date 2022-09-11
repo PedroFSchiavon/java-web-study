@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servelet;
+package br.com.alura.gerenciador.classesDepreciadas;
 
 import br.com.alura.gerenciador.model.Banco;
 import br.com.alura.gerenciador.model.Empresa;

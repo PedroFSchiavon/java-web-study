@@ -2,6 +2,7 @@ package br.com.alura.gerenciador.actions;
 
 import br.com.alura.gerenciador.model.Banco;
 import br.com.alura.gerenciador.model.Empresa;
+import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -10,8 +11,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class NovaEmpresa {
-    public String  novaEmpresa(HttpServletRequest request, HttpServletResponse response) throws IOException {
+public class NovaEmpresa implements Acao{
+    public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("Cadastrando nova empresa");
         String novaEmpresa = request.getParameter("nome");
         String paramDataCriacao = request.getParameter("data");
@@ -33,6 +34,6 @@ public class NovaEmpresa {
         banco.adiciona(empresa);
         System.out.println("Empresa cadastrada com sucesso!" + empresa.getNome() + "ID: " + empresa.getId());
 
-        return "redirect:entrada?action=lista-empresas";
+        return "redirect:entrada?action=ListaEmpresas";
     }
 }
