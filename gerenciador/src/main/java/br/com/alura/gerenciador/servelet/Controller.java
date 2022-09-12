@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -18,15 +19,20 @@ public class Controller extends HttpServlet {
         String paramAction = request.getParameter("action");
         String nomeCompletoClasse = "br.com.alura.gerenciador.actions." + paramAction;
         String nome = null;
+        HttpSession session = request.getSession();
 
-        try{
-            Class<?> classe = Class.forName(nomeCompletoClasse);
-            Acao acao = (Acao) classe.newInstance();
-            nome = acao.run(request, response);
-        }catch (ClassNotFoundException | InstantiationException | IllegalAccessException exception){
-            throw new ServletException(exception);
+        if (!Objects.equals(paramAction, "LoginForm") && !Objects.equals(paramAction, "AutenticaLogin")
+                && session.getAttribute("usuarioAutenticado") == null) {
+            nome = "redirect:entrada?action=LoginForm";
+        }else {
+            try {
+                Class<?> classe = Class.forName(nomeCompletoClasse);
+                Acao acao = (Acao) classe.newInstance();
+                nome = acao.run(request, response);
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException exception) {
+                throw new ServletException(exception);
+            }
         }
-
         String[] entradaENome = nome.split(":");
 
         if(Objects.equals(entradaENome[0], "forward")){

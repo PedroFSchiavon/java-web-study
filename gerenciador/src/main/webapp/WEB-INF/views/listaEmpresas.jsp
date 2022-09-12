@@ -11,6 +11,10 @@ Created by IntelliJ IDEA.
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <body>
+    Nome usuário: ${usuarioAutenticado.login}
+    <br>
+    <br>
+    <br>
     <c:if test="${not empty empresa}">
         A empresa ${empresa} foi criada com sucesso!
     </c:if>

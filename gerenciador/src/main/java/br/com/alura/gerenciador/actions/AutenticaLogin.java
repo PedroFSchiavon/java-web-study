@@ -5,6 +5,7 @@ import br.com.alura.gerenciador.model.Usuario;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -17,11 +18,14 @@ public class AutenticaLogin implements Acao{
         Banco banco = new Banco();
         Usuario usuario = banco.validaLogin(login, password);
 
-        if(usuario == null) {
+        if(usuario != null) {
+            System.out.println("Usuario autenticado com sucesso.");
+            HttpSession session = request.getSession();
+            session.setAttribute("usuarioAutenticado", usuario);
+            return "redirect:entrada?action=ListaEmpresas";
+        }else{
             System.out.println("Usuario nao identificado");
             return "redirect:LoginForm";
         }
-        System.out.println("Usuario autenticado com sucesso.");
-        return "redirect:entrada?action=ListaEmpresas";
     }
 }
