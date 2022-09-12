@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class RemoveEmpresa implements Acao{
-    public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public String run(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("Removendo empresa");
         String idParaRemover = request.getParameter("id");
         System.out.println("Cheguei aqui, olha meu id = " + idParaRemover);

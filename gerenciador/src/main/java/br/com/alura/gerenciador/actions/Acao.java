@@ -7,5 +7,5 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public interface Acao {
-    String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException;
+    String run(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException;
 }

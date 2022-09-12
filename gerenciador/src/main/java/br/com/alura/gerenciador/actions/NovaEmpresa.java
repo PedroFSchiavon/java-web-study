@@ -12,7 +12,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class NovaEmpresa implements Acao{
-    public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public String run(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("Cadastrando nova empresa");
         String novaEmpresa = request.getParameter("nome");
         String paramDataCriacao = request.getParameter("data");

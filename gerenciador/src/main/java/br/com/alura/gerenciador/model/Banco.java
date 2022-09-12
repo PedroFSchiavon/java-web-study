@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class Banco {
     private static final List<Empresa> lista = new ArrayList<>();
+    private static final List<Usuario> usuarios = new ArrayList<>();
 
     static {
         Empresa empresa1 = new Empresa();
@@ -17,6 +19,16 @@ public class Banco {
         empresa2.setNome("Virtual Sistemas");
         Banco.lista.add(empresa1);
         Banco.lista.add(empresa2);
+
+        Usuario u1 = new Usuario();
+        u1.setLogin("pedro");
+        u1.setPassword("123456");
+        Usuario u2 = new Usuario();
+        u2.setLogin("andressa");
+        u2.setPassword("654321");
+
+        Banco.usuarios.add(u1);
+        Banco.usuarios.add(u2);
     }
     public void adiciona(Empresa empresa) {
         Banco.lista.add(empresa);
@@ -44,5 +56,14 @@ public class Banco {
                 empresa.setDataCriacao(data);
             }
         });
+    }
+
+    public Usuario validaLogin(String login, String password){
+        Usuario usuarioValidado = null;
+        for (Usuario usuario: Banco.usuarios) {
+            if(usuario.equals(new Usuario(login, password)))
+                usuarioValidado = usuario;
+        }
+        return usuarioValidado;
     }
 }

@@ -22,7 +22,7 @@ public class Controller extends HttpServlet {
         try{
             Class<?> classe = Class.forName(nomeCompletoClasse);
             Acao acao = (Acao) classe.newInstance();
-            nome = acao.executa(request, response);
+            nome = acao.run(request, response);
         }catch (ClassNotFoundException | InstantiationException | IllegalAccessException exception){
             throw new ServletException(exception);
         }

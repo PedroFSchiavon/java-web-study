@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class MostraEmpresa implements Acao{
-    public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public String run(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("Mostrando dados da empresa");
         String idParameter = request.getParameter("id");
         Integer id = Integer.valueOf(idParameter);

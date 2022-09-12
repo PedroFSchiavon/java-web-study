@@ -6,8 +6,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-public class NovaEmpresaForm implements Acao{
-    public String run(HttpServletRequest request, HttpServletResponse response)  throws IOException, ServletException {
-        return "forward:formNovaEmpresa.jsp";
+public class LoginForm implements Acao{
+    @Override
+    public String run(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        return "forward:formLogin.jsp";
     }
 }

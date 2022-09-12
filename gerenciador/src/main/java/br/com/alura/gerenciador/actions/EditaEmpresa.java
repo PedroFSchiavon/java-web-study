@@ -11,7 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class EditaEmpresa implements Acao{
-    public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public String run(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         System.out.println("Editando empresa");
         String idParameter = request.getParameter("id");
         System.out.println("Olha o id: " + idParameter);

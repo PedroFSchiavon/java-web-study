@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class ListaEmpresas implements Acao{
-    public String executa(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
+    public String run(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException{
         System.out.println("listando empresas");
         Banco banco = new Banco();
         List<Empresa> lista = banco.getLista();
