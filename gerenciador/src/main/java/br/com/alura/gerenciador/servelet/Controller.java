@@ -20,9 +20,10 @@ public class Controller extends HttpServlet {
         String nomeCompletoClasse = "br.com.alura.gerenciador.actions." + paramAction;
         String nome = null;
         HttpSession session = request.getSession();
+        boolean usuarioNaoLogado = session.getAttribute("usuarioAutenticado") == null;
+        boolean actionsProibidas = !(Objects.equals(paramAction, "LoginForm") || Objects.equals(paramAction, "AutenticaLogin"));
 
-        if (!Objects.equals(paramAction, "LoginForm") && !Objects.equals(paramAction, "AutenticaLogin")
-                && session.getAttribute("usuarioAutenticado") == null) {
+        if (actionsProibidas && usuarioNaoLogado) {
             nome = "redirect:entrada?action=LoginForm";
         }else {
             try {

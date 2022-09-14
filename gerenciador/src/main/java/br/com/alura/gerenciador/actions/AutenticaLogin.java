@@ -25,7 +25,7 @@ public class AutenticaLogin implements Acao{
             return "redirect:entrada?action=ListaEmpresas";
         }else{
             System.out.println("Usuario nao identificado");
-            return "redirect:LoginForm";
+            return "redirect:entrada?action=LoginForm";
         }
     }
 }
