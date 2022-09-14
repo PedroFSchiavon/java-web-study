@@ -7,6 +7,7 @@
     <title>Cadastro</title>
 </head>
 <body>
+    <c:import url="logoutELoginTemplate.jsp" />
     <form action="${pathNovaEmpresa}" method="post">
         Nome: <input type="text" name="nome" />
         Data Criação: <input type="text" name="data">

@@ -18,4 +18,8 @@
         <servlet-name>UnicaEntradaServlet</servlet-name>
         <servlet-class>br.com.alura.gerenciador.servelet.Controller</servlet-class>
     </servlet>
+    <session-config>
+        <!-- 10 min -->
+        <session-timeout>10</session-timeout>
+    </session-config>
 </web-app>

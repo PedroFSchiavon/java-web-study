@@ -15,6 +15,7 @@
     <title>Edita Empresa</title>
 </head>
 <body>
+    <c:import url="logoutELoginTemplate.jsp" />
     <form action="${pathEditaEmpresa}" method="post">
       Nome: <input type="text" value="${empresaNome}" name="nome" />
       Data Criação: <input type="text" value="${dataFormatada}" name="data">

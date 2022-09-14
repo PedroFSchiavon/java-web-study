@@ -13,6 +13,7 @@
     <title>Formulário de Login</title>
 </head>
 <body>
+    <c:import url="logoutELoginTemplate.jsp" />
     <form action="${pathEntrada}" method="post">
         Login: <input type="text" name="login" />
         Senha: <input type="password" name="password">
