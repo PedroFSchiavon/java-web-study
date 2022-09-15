@@ -9,6 +9,7 @@ Created by IntelliJ IDEA.
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<c:url value="/entrada?action=NovaEmpresaForm" var="castroEmpresa" />
 <html>
 <body>
     <c:import url="logoutELoginTemplate.jsp" />
@@ -22,6 +23,8 @@ Created by IntelliJ IDEA.
         <li>${empresa.nome} - <fmt:formatDate value="${empresa.dataCriacao}" pattern="dd/MM/yyyy"/>
             <a href="${pathRemoveEmpresa}"> remover</a> | <a href="${pathEditaEmpresa}" > editar</a> </li>
     </c:forEach>
+    <br>
+    <a href="${castroEmpresa}">Cadastrar</a>
 </body>
 <head>
     <title>Lista de empresas</title>
