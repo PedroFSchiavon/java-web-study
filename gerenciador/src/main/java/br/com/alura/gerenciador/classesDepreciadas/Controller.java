@@ -1,4 +1,4 @@
-package br.com.alura.gerenciador.servelet;
+package br.com.alura.gerenciador.classesDepreciadas;
 
 import br.com.alura.gerenciador.actions.Acao;
 import jakarta.servlet.RequestDispatcher;
@@ -7,41 +7,41 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.Objects;
 
-@WebServlet(urlPatterns = "/entrada")
+//@WebServlet(urlPatterns = "/entrada")
 public class Controller extends HttpServlet {
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String paramAction = request.getParameter("action");
         String nomeCompletoClasse = "br.com.alura.gerenciador.actions." + paramAction;
         String nome = null;
-        HttpSession session = request.getSession();
-        boolean usuarioNaoLogado = session.getAttribute("usuarioAutenticado") == null;
-        boolean actionsProibidas = !(Objects.equals(paramAction, "LoginForm") || Objects.equals(paramAction, "AutenticaLogin"));
-
-        if (actionsProibidas && usuarioNaoLogado) {
-            nome = "redirect:entrada?action=LoginForm";
-        }else {
-            try {
-                Class<?> classe = Class.forName(nomeCompletoClasse);
-                Acao acao = (Acao) classe.newInstance();
-                nome = acao.run(request, response);
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException exception) {
-                throw new ServletException(exception);
-            }
+//        HttpSession session = request.getSession();
+//        boolean usuarioNaoLogado = session.getAttribute("usuarioAutenticado") == null;
+//        boolean actionsProibidas = !(Objects.equals(paramAction, "LoginForm") || Objects.equals(paramAction, "AutenticaLogin"));
+//
+//        if (actionsProibidas && usuarioNaoLogado) {
+//            nome = "redirect:entrada?action=LoginForm";
+//    }
+        try {
+            Class<?> classe = Class.forName(nomeCompletoClasse);
+            Acao acao = (Acao) classe.newInstance();
+            nome = acao.run(request, response);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException exception) {
+            throw new ServletException(exception);
         }
-        String[] entradaENome = nome.split(":");
 
-        if(Objects.equals(entradaENome[0], "forward")){
-            RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/" + entradaENome[1]);
-            rd.forward(request, response);
-        }else {
-            response.sendRedirect(entradaENome[1]);
-        }
+
+    String[] entradaENome = nome.split(":");
+
+    if(Objects.equals(entradaENome[0],"forward")){
+        RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/views/" + entradaENome[1]);
+        rd.forward(request, response);
+    }else{
+        response.sendRedirect(entradaENome[1]);
+    }
 
 
 //        Forma anterior
@@ -71,6 +71,5 @@ public class Controller extends HttpServlet {
 //                nome = novaEmpresaform.criaEmpresa(request, response);
 //                break;
 //        }
-
     }
 }

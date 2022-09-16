@@ -1,14 +1,14 @@
-package br.com.alura.gerenciador.servelet;
+package br.com.alura.gerenciador.controller;
 
 import jakarta.servlet.*;
-import jakarta.servlet.annotation.WebFilter;
 
 import java.io.IOException;
 
-@WebFilter(urlPatterns = "/entrada")
+//@WebFilter(urlPatterns = "/entrada")
 public class MonitoramentoFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        System.out.println("MonitoramentoFilter");
         long inicio = System.currentTimeMillis();
 
         String action = servletRequest.getParameter("action");
