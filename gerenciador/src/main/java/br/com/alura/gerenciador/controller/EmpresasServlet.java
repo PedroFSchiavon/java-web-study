@@ -33,7 +33,7 @@ public class EmpresasServlet extends HttpServlet {
             response.setContentType("application/xml");
         }else {
             return;
-        }   
+        }
 
         response.getWriter().print(respostaApi);
     }
