@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7b83c44c-1fb4-4de7-86c6-36b7b9702159" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/DeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/DeleteTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/InsersaoTeste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/InsersaoTeste.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,8 +91,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.SelectTest" />
-        <item itemvalue="Application.DeleteTest" />
         <item itemvalue="Application.InsersaoTeste" />
+        <item itemvalue="Application.DeleteTest" />
       </list>
     </recent_temporary>
   </component>

@@ -4,25 +4,33 @@ import java.sql.*;
 
 public class InsersaoTeste {
     public static void main(String[] args) throws SQLException {
-        String nome = "Sorvete'); drop table PRODUTO;";
-        String descricao = "SQL Injection.";
         ConnectionFactory connectionFactory = new ConnectionFactory();
         try (Connection connection = connectionFactory.criaConexao()) {
+            connection.setAutoCommit(false);
             PreparedStatement statement = connection
                     .prepareStatement("insert into PRODUTO (nome, descricao) values (?, ?)",
                             Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, nome);
-            statement.setString(2, descricao);
-            statement.executeUpdate();
-            ResultSet generatedKeys = statement.getGeneratedKeys();
-            while (generatedKeys.next()) {
-                int id = generatedKeys.getInt(1);
-                System.out.println("Gerei o produto de ID: " + id);
-            }
+            insereDados("Gelo", "Algo bem gelado", statement);
+            insereDados("Cha", "Algo bem quente", statement);
+
+            connection.commit();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            System.out.println("ROLLBACK EXECUTADO.");
+
         } finally {
             System.out.println("Fim do update.");
+        }
+    }
+
+    private static void insereDados(String nome, String descricao, PreparedStatement statement) throws SQLException {
+        statement.setString(1, nome);
+        statement.setString(2, descricao);
+        statement.executeUpdate();
+        ResultSet generatedKeys = statement.getGeneratedKeys();
+        while (generatedKeys.next()) {
+            int id = generatedKeys.getInt(1);
+            System.out.println("Gerei o produto de ID: " + id);
         }
     }
 }
