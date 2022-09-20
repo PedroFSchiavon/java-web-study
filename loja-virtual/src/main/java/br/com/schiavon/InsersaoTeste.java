@@ -1,17 +1,19 @@
 package br.com.schiavon;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class InsersaoTeste {
     public static void main(String[] args) throws SQLException {
+        String nome = "Sorvete'); drop table PRODUTO;";
+        String descricao = "SQL Injection.";
         ConnectionFactory connectionFactory = new ConnectionFactory();
         try (Connection connection = connectionFactory.criaConexao()) {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into PRODUTO (nome, descricao) values ('Caneta Azul', 'azul caneta!')",
-                    Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement statement = connection
+                    .prepareStatement("insert into PRODUTO (nome, descricao) values (?, ?)",
+                            Statement.RETURN_GENERATED_KEYS);
+            statement.setString(1, nome);
+            statement.setString(2, descricao);
+            statement.executeUpdate();
             ResultSet generatedKeys = statement.getGeneratedKeys();
             while (generatedKeys.next()) {
                 int id = generatedKeys.getInt(1);
