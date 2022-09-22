@@ -4,9 +4,8 @@ import java.sql.*;
 
 public class InsersaoTeste {
     public static void main(String[] args) throws SQLException {
-        ConnectionFactory connectionFactory = new ConnectionFactory();
 
-        try(Connection connection = connectionFactory.criaConexao()){
+        try(Connection connection = new ConnectionFactory().criaConexao()){
             connection.setAutoCommit(false);
             try (PreparedStatement statement = connection
                     .prepareStatement("insert into PRODUTO (nome, descricao) values (?, ?)",
