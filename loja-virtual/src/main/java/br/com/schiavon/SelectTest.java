@@ -1,31 +1,23 @@
 package br.com.schiavon;
 
+import br.com.schiavon.dao.ProdutoDao;
+import br.com.schiavon.model.Produto;
+
 import java.sql.*;
+import java.util.List;
 
 public class SelectTest {
     public static void main(String[] args){
-        ConnectionFactory connectionFactory = new ConnectionFactory();
-        System.out.println("--------------------------------------------");
-
-        try(Connection connection = connectionFactory.criaConexao();
-            PreparedStatement statement = connection.prepareStatement("select * from PRODUTO");
-            ResultSet resultSet = statement.executeQuery()){
-                while (resultSet.next()){
-                    int id = resultSet.getInt("id");
-                    String nome = resultSet.getString("nome");
-                    String descricao = resultSet.getString("descricao");
-
-                    System.out.printf("ID: %d | Nome: %s | Descrição: %s\n", id, nome, descricao);
-                }
-
+        List<Produto> produtos = null;
+        try(Connection connection = new ConnectionFactory().criaConexao()){
+            ProdutoDao produtoDao = new ProdutoDao(connection);
+            produtos = produtoDao.listar();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }finally {
             System.out.println("fim do select");
         }
 
-
-
-        System.out.println("Conectei alombado!");
+        produtos.forEach(produto -> System.out.println(produto));
     }
 }
