@@ -7,7 +7,8 @@
     <list default="true" id="7b83c44c-1fb4-4de7-86c6-36b7b9702159" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/InsersaoTeste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/InsersaoTeste.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/SelectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/SelectTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/dao/ProdutoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/dao/ProdutoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/model/Produto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +50,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.SelectTest">
+  <component name="RunManager" selected="Application.InsersaoTeste">
     <configuration name="DeleteTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="br.com.schiavon.DeleteTest" />
       <module name="loja-virtual" />
@@ -104,8 +105,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SelectTest" />
         <item itemvalue="Application.InsersaoTeste" />
+        <item itemvalue="Application.SelectTest" />
         <item itemvalue="Application.TestaPoolConexoes" />
         <item itemvalue="Application.DeleteTest" />
       </list>
@@ -125,7 +126,7 @@
       <workItem from="1663780607779" duration="4402000" />
       <workItem from="1663879203847" duration="571000" />
       <workItem from="1663951330495" duration="2531000" />
-      <workItem from="1663960142968" duration="2157000" />
+      <workItem from="1663960142968" duration="4188000" />
     </task>
     <servers />
   </component>

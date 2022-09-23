@@ -7,7 +7,7 @@ import java.sql.*;
 
 public class InsersaoTeste {
     public static void main(String[] args){
-        Produto produto = new Produto("Kindle", "Leitor digital");
+        Produto produto = new Produto("Liquitificador", "Liquitificador normal", 2);
 
         try(Connection connection = new ConnectionFactory().criaConexao()){
             connection.setAutoCommit(false);

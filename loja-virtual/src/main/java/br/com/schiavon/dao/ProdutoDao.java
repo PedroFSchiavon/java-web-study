@@ -15,10 +15,11 @@ public class ProdutoDao {
 
     public void salvar(Produto produto) throws SQLException {
         try (PreparedStatement statement = connection
-                .prepareStatement("insert into PRODUTO (nome, descricao) values (?, ?)",
+                .prepareStatement("insert into PRODUTO (categoria_id, nome, descricao) values (?, ?, ?)",
                         Statement.RETURN_GENERATED_KEYS);) {
-            statement.setString(1, produto.getNome());
-            statement.setString(2, produto.getDescricao());
+            statement.setInt(1, produto.getCategoria());
+            statement.setString(2, produto.getNome());
+            statement.setString(3, produto.getDescricao());
             statement.executeUpdate();
 
             try(ResultSet generatedKeys = statement.getGeneratedKeys()) {
@@ -32,6 +33,7 @@ public class ProdutoDao {
             }
 
             connection.commit();
+            System.out.println("Commit executado.");
         } catch (SQLException e) {
             e.printStackTrace();
             connection.rollback();
@@ -41,19 +43,21 @@ public class ProdutoDao {
         }
     }
 
-    public List listar(){
+    public List<Produto> listar(){
         List<Produto> produtos = new ArrayList<>();
         int id;
+        int categoria;
         String nome;
         String descricao;
         try(PreparedStatement statement = connection.prepareStatement("select * from PRODUTO");
             ResultSet resultSet = statement.executeQuery()){
             while (resultSet.next()){
                 id = resultSet.getInt("id");
+                categoria = resultSet.getInt("categoria_id");
                 nome = resultSet.getString("nome");
                 descricao = resultSet.getString("descricao");
 
-                produtos.add(new Produto(id, nome, descricao));
+                produtos.add(new Produto(id, nome, descricao, categoria));
             }
         }catch (SQLException e){
             e.printStackTrace();
