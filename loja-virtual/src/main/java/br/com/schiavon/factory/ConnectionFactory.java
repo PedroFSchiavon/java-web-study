@@ -1,4 +1,4 @@
-package br.com.schiavon;
+package br.com.schiavon.factory;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 

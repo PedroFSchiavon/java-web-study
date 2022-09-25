@@ -15,7 +15,7 @@ public class ProdutoDao {
 
     public void salvar(Produto produto) throws SQLException {
         try (PreparedStatement statement = connection
-                .prepareStatement("insert into PRODUTO (categoria_id, nome, descricao) values (?, ?, ?)",
+                .prepareStatement("insert into PRODUTO (id_categoria, nome, descricao) values (?, ?, ?)",
                         Statement.RETURN_GENERATED_KEYS);) {
             statement.setInt(1, produto.getCategoria());
             statement.setString(2, produto.getNome());
@@ -53,7 +53,7 @@ public class ProdutoDao {
             ResultSet resultSet = statement.executeQuery()){
             while (resultSet.next()){
                 id = resultSet.getInt("id");
-                categoria = resultSet.getInt("categoria_id");
+                categoria = resultSet.getInt("id_categoria");
                 nome = resultSet.getString("nome");
                 descricao = resultSet.getString("descricao");
 

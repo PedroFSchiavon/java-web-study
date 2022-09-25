@@ -1,6 +1,7 @@
 package br.com.schiavon;
 
 import br.com.schiavon.dao.ProdutoDao;
+import br.com.schiavon.factory.ConnectionFactory;
 import br.com.schiavon.model.Produto;
 
 import java.sql.*;

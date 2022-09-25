@@ -6,7 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="7b83c44c-1fb4-4de7-86c6-36b7b9702159" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/ConnectionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/factory/ConnectionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/DeleteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/DeleteTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/InsersaoTeste.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/InsersaoTeste.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/SelectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/SelectTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/TestaPoolConexoes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/TestaPoolConexoes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/dao/ProdutoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/dao/ProdutoDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/br/com/schiavon/model/Produto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/br/com/schiavon/model/Produto.java" afterDir="false" />
     </list>
@@ -50,13 +54,20 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.InsersaoTeste">
+  <component name="RunManager" selected="Application.CategoriaTest">
+    <configuration name="CategoriaTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CategoriaTest" />
+      <module name="loja-virtual" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DeleteTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="br.com.schiavon.DeleteTest" />
       <module name="loja-virtual" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="br.com.schiavon.*" />
+          <option name="PATTERN" value="br.com.schiavon.factory.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -69,7 +80,7 @@
       <module name="loja-virtual" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="br.com.schiavon.*" />
+          <option name="PATTERN" value="br.com.schiavon.factory.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -82,7 +93,7 @@
       <module name="loja-virtual" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="br.com.schiavon.*" />
+          <option name="PATTERN" value="br.com.schiavon.factory.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -95,7 +106,7 @@
       <module name="loja-virtual" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="br.com.schiavon.*" />
+          <option name="PATTERN" value="br.com.schiavon.factory.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -105,6 +116,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CategoriaTest" />
         <item itemvalue="Application.InsersaoTeste" />
         <item itemvalue="Application.SelectTest" />
         <item itemvalue="Application.TestaPoolConexoes" />

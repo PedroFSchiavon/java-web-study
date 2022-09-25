@@ -1,5 +1,7 @@
 package br.com.schiavon;
 
+import br.com.schiavon.factory.ConnectionFactory;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
