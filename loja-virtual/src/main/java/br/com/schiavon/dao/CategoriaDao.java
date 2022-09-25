@@ -40,15 +40,16 @@ public class CategoriaDao {
             preparedStatement.executeQuery();
             try(ResultSet resultSet = preparedStatement.getResultSet()){
                 while (resultSet.next()){
-                    if(ultima == null || !ultima.getNome().equals(resultSet.getString(2))){
-                        ultima = new Categoria(resultSet.getInt(1), resultSet.getString(2));
+                    Categoria categoria = new Categoria(resultSet.getInt(1), resultSet.getString(2));
+                    if(ultima == null || !ultima.equals(categoria)){
+                        ultima = categoria;
+                        categoriasComProdutos.add(ultima);
                     }
+
                     Produto produto = new Produto(resultSet.getInt(3), resultSet.getString(4),
                             resultSet.getString(5));
                     ultima.setProdutos(produto);
-
-                    System.out.println(ultima.getNome());
-                    categoriasComProdutos.add(ultima);
+                    
                 }
             }
 
