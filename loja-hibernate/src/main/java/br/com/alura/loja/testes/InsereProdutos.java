@@ -15,7 +15,7 @@ public class InsereProdutos {
         produto.setPreco(new BigDecimal(800.50f));
 
         EntityManagerFactory managerFactory =
-                Persistence.createEntityManagerFactory("loja-hibernate");
+                Persistence.createEntityManagerFactory("loja_hibernate");
         EntityManager manager = managerFactory.createEntityManager();
         manager.getTransaction().begin();
         manager.persist(produto);
