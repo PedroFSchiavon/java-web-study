@@ -22,6 +22,7 @@ public class InsereProdutos {
         ProdutoDao produtoDao = new ProdutoDao(manager);
         produtoDao.inserir(produto);
         manager.getTransaction().commit();
+        manager.close();
 
     }
 }
