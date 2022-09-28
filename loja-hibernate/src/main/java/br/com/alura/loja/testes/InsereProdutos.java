@@ -1,24 +1,23 @@
 package br.com.alura.loja.testes;
 
+import br.com.alura.loja.dao.ProdutoDao;
+import br.com.alura.loja.enuns.Categoria;
 import br.com.alura.loja.model.Produto;
+import br.com.alura.loja.utils.DaoUtil;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 
 import java.math.BigDecimal;
 
 public class InsereProdutos {
     public static void main(String[] args) {
-        Produto produto = new Produto();
-        produto.setNome("Notebook");
-        produto.setDescricao("Hp probook muito top");
-        produto.setPreco(new BigDecimal(800.50f));
+        Produto produto = new Produto("Notebook", "Accer nitro 5 bom",
+                new BigDecimal(800.50f), Categoria.ELETRONICO);
 
-        EntityManagerFactory managerFactory =
-                Persistence.createEntityManagerFactory("loja_hibernate");
-        EntityManager manager = managerFactory.createEntityManager();
+        EntityManager manager = new DaoUtil().getEntityManager();
         manager.getTransaction().begin();
-        manager.persist(produto);
+        ProdutoDao produtoDao = new ProdutoDao(manager);
+        produtoDao.inserir(produto);
         manager.getTransaction().commit();
+
     }
 }

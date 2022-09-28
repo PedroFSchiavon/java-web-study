@@ -1,12 +1,10 @@
 package br.com.alura.loja.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import br.com.alura.loja.enuns.Categoria;
+import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "produtos")
@@ -18,6 +16,33 @@ public class Produto {
     //    @Column(name = "desc")
     private String descricao;
     private BigDecimal preco;
+    private LocalDate localDate = LocalDate.now();
+
+    @Enumerated(EnumType.STRING)
+    private Categoria categoria;
+
+    public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria){
+        this.nome = nome;
+        this.descricao = descricao;
+        this.preco = preco;
+        this.categoria = categoria;
+    }
+
+    public LocalDate getLocalDate() {
+        return localDate;
+    }
+
+    public void setLocalDate(LocalDate localDate) {
+        this.localDate = localDate;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public Long getId() {
         return id;
