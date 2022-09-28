@@ -1,6 +1,5 @@
 package br.com.alura.loja.model;
 
-import br.com.alura.loja.enuns.Categoria;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
@@ -18,7 +17,7 @@ public class Produto {
     private BigDecimal preco;
     private LocalDate localDate = LocalDate.now();
 
-    @Enumerated(EnumType.STRING)
+    @ManyToOne
     private Categoria categoria;
 
     public Produto(String nome, String descricao, BigDecimal preco, Categoria categoria){
