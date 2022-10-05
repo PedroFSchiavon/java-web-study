@@ -1,10 +1,7 @@
 package br.com.alura.loja.dao;
 
 import br.com.alura.loja.model.Produto;
-import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
 
 import java.math.BigDecimal;
 import java.util.Collections;
