@@ -8,21 +8,35 @@ import br.com.alura.loja.utils.DaoUtil;
 import jakarta.persistence.EntityManager;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class InsereProdutos {
     public static void main(String[] args) {
-        Categoria categoria = new Categoria("NOTEBOOKS");
-        Produto produto = new Produto("Notebook", "Accer nitro 5 bom",
-                new BigDecimal(800.50f), categoria);
+        cadastrarProduto();
+        EntityManager manager = new DaoUtil().getEntityManager();
+        ProdutoDao produtoDao = new ProdutoDao(manager);
+
+        Produto produto = produtoDao.procurarPorId(1l);
+        System.out.println(produto.getNome());
+
+        List<Produto> produtos = produtoDao.procuraTodos();
+        produtos.stream().forEach(p -> System.out.println(p.getNome()));
+
+    }
+
+    private static void cadastrarProduto() {
+        Categoria categoria = new Categoria("NOTEBOOK");
+        Produto produto = new Produto("Accer nitro 5", "Notebook top de ++",
+                new BigDecimal("2999.99"), categoria);
 
         EntityManager manager = new DaoUtil().getEntityManager();
-        manager.getTransaction().begin();
         CategoriaDao categoriaDao = new CategoriaDao(manager);
-        categoriaDao.inserir(categoria);
         ProdutoDao produtoDao = new ProdutoDao(manager);
+
+        manager.getTransaction().begin();
+        categoriaDao.inserir(categoria);
         produtoDao.inserir(produto);
         manager.getTransaction().commit();
         manager.close();
-
     }
 }

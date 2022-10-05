@@ -11,6 +11,15 @@ public class CategoriaDao {
     }
 
     public void inserir(Categoria categoria){
-        manager.persist(categoria);
+        this.manager.persist(categoria);
+    }
+
+    public void atualizar(Categoria categoria){
+        this.manager.merge(categoria);
+    }
+
+    public void remover(Categoria categoria){
+        categoria = this.manager.merge(categoria);
+        this.manager.remove(categoria);
     }
 }

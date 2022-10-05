@@ -6,6 +6,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.util.Collections;
+import java.util.List;
+
 public class ProdutoDao {
     private EntityManager manager;
 
@@ -14,6 +17,24 @@ public class ProdutoDao {
     }
 
     public void inserir(Produto produto){
-        manager.persist(produto);
+        this.manager.persist(produto);
+    }
+    
+    public void atualizar(Produto produto){
+        this.manager.merge(produto);
+    }
+    
+    public void remove(Produto produto){
+        produto = this.manager.merge(produto);
+        this.manager.remove(produto);
+    }
+
+    public Produto procurarPorId(long id){
+        return this.manager.find(Produto.class, id);
+    }
+
+    public List<Produto> procuraTodos(){
+        String jpql = "SELECT p from Produto as p";
+        return Collections.unmodifiableList(this.manager.createQuery(jpql).getResultList());
     }
 }
