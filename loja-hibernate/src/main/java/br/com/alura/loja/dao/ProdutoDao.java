@@ -35,6 +35,18 @@ public class ProdutoDao {
 
     public List<Produto> procuraTodos(){
         String jpql = "SELECT p from Produto as p";
-        return Collections.unmodifiableList(this.manager.createQuery(jpql).getResultList());
+        return Collections.unmodifiableList(this.manager.createQuery(jpql, Produto.class).getResultList());
+    }
+
+    public List<Produto> procurarPorNome(String nome){
+        String jpql = "SELECT p from Produto as p WHERE p.nome = ?1";
+        return Collections.unmodifiableList(this.manager.createQuery(jpql, Produto.class)
+                .setParameter(1, nome).getResultList());
+    }
+
+    public List<Produto> procurarPorCategoria(String nome){
+        String jpql = "SELECT p from Produto as p WHERE p.categoria.nome = ?1";
+        return Collections.unmodifiableList(this.manager.createQuery(jpql, Produto.class)
+                .setParameter(1, nome).getResultList());
     }
 }

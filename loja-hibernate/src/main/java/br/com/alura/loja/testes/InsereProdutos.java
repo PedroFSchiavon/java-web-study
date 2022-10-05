@@ -15,19 +15,26 @@ public class InsereProdutos {
         cadastrarProduto();
         EntityManager manager = new DaoUtil().getEntityManager();
         ProdutoDao produtoDao = new ProdutoDao(manager);
+//
+//        Produto produto = produtoDao.procurarPorId(1l);
+//        System.out.println(produto.getNome());
+//
+//        List<Produto> produtos = produtoDao.procuraTodos();
+//        produtos.stream().forEach(p -> System.out.println(p.getNome()));
+//
+//        List<Produto> accer = produtoDao.procurarPorNome("Accer nitro 5");
+//        accer.stream().forEach(a -> System.out.println(a.getNome() + " -- " + a.getLocalDate()));
 
-        Produto produto = produtoDao.procurarPorId(1l);
-        System.out.println(produto.getNome());
+        List<Produto> categoria = produtoDao.procurarPorCategoria("CELULAR");
+        categoria.stream().forEach(c -> System.out.println(c.getNome() + "----------" + c.getDescricao()));
 
-        List<Produto> produtos = produtoDao.procuraTodos();
-        produtos.stream().forEach(p -> System.out.println(p.getNome()));
 
     }
 
     private static void cadastrarProduto() {
-        Categoria categoria = new Categoria("NOTEBOOK");
-        Produto produto = new Produto("Accer nitro 5", "Notebook top de ++",
-                new BigDecimal("2999.99"), categoria);
+        Categoria categoria = new Categoria("CELULAR");
+        Produto produto = new Produto("Moto e5", "Motorola ja foi bão",
+                new BigDecimal("999.99"), categoria);
 
         EntityManager manager = new DaoUtil().getEntityManager();
         CategoriaDao categoriaDao = new CategoriaDao(manager);
