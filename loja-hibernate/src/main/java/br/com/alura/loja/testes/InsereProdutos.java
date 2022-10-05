@@ -25,10 +25,11 @@ public class InsereProdutos {
 //        List<Produto> accer = produtoDao.procurarPorNome("Accer nitro 5");
 //        accer.stream().forEach(a -> System.out.println(a.getNome() + " -- " + a.getLocalDate()));
 
-        List<Produto> categoria = produtoDao.procurarPorCategoria("CELULAR");
-        categoria.stream().forEach(c -> System.out.println(c.getNome() + "----------" + c.getDescricao()));
+//        List<Produto> categoria = produtoDao.procurarPorCategoria("CELULAR");
+//        categoria.stream().forEach(c -> System.out.println(c.getNome() + "----------" + c.getDescricao()));
 
-
+        BigDecimal preco = produtoDao.procurarPrecoPorNome("Redmi note 8");
+        System.out.println("Preco do Redmi: " + preco);
     }
 
     private static void cadastrarProduto() {

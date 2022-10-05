@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.List;
 
@@ -44,9 +45,16 @@ public class ProdutoDao {
                 .setParameter(1, nome).getResultList());
     }
 
-    public List<Produto> procurarPorCategoria(String nome){
-        String jpql = "SELECT p from Produto as p WHERE p.categoria.nome = ?1";
+    public List<Produto> procurarPorCategoria(String categoria){
+        String jpql = "SELECT p from Produto as p WHERE p.categoria.nome = :categoria";
         return Collections.unmodifiableList(this.manager.createQuery(jpql, Produto.class)
-                .setParameter(1, nome).getResultList());
+                .setParameter("categoria", categoria).getResultList());
+    }
+
+    public BigDecimal procurarPrecoPorNome(String nome){
+        String jpql = "SELECT p.preco from Produto as p WHERE p.nome = ?1";
+        return this.manager.createQuery(jpql, BigDecimal.class)
+                .setParameter(1, nome)
+                .getSingleResult();
     }
 }
