@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,13 +15,14 @@ public class Pedido {
     private long id;
     private LocalDate data = LocalDate.now();
     @ManyToOne
-    private Cliente clienteId;
-    private BigDecimal valorTotal;
-    @OneToMany
-    private List<ItensPedidos> itensPedidos;
+    private Cliente cliente;
+    @Column(name = "valor_total")
+    private BigDecimal valorTotal = BigDecimal.ZERO;
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
+    private List<ItensPedidos> itens = new ArrayList<>();
 
-    public Pedido(Cliente clienteId) {
-        this.clienteId = clienteId;
+    public Pedido(Cliente cliente) {
+        this.cliente = cliente;
     }
 
     public Pedido() {
@@ -42,12 +44,12 @@ public class Pedido {
         this.data = data;
     }
 
-    public Cliente getClienteId() {
-        return clienteId;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setClienteId(Cliente clienteId) {
-        this.clienteId = clienteId;
+    public void setCliente(Cliente clienteId) {
+        this.cliente = clienteId;
     }
 
     public BigDecimal getValorTotal() {
@@ -56,5 +58,12 @@ public class Pedido {
 
     public void setValorTotal(BigDecimal valorTotal) {
         this.valorTotal = valorTotal;
+    }
+
+    public void adicionaItem(ItensPedidos item){
+        item.setPedido(this);
+        this.itens.add(item);
+        this.valorTotal = this.valorTotal.add(item.getPrecoUnitario()
+                .multiply(new BigDecimal(item.getQuantidade())));
     }
 }

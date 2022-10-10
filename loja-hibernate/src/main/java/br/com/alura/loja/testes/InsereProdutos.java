@@ -13,8 +13,8 @@ import java.util.List;
 public class InsereProdutos {
     public static void main(String[] args) {
         cadastrarProduto();
-        EntityManager manager = new DaoUtil().getEntityManager();
-        ProdutoDao produtoDao = new ProdutoDao(manager);
+//        EntityManager manager = new DaoUtil().getEntityManager();
+//        ProdutoDao produtoDao = new ProdutoDao(manager);
 //
 //        Produto produto = produtoDao.procurarPorId(1l);
 //        System.out.println(produto.getNome());
@@ -28,8 +28,8 @@ public class InsereProdutos {
 //        List<Produto> categoria = produtoDao.procurarPorCategoria("CELULAR");
 //        categoria.stream().forEach(c -> System.out.println(c.getNome() + "----------" + c.getDescricao()));
 
-        BigDecimal preco = produtoDao.procurarPrecoPorNome("Redmi note 8");
-        System.out.println("Preco do Redmi: " + preco);
+//        BigDecimal preco = produtoDao.procurarPrecoPorNome("Redmi note 8");
+//        System.out.println("Preco do Redmi: " + preco);
     }
 
     private static void cadastrarProduto() {
