@@ -10,7 +10,7 @@ public class ClienteDao {
         this.manager = manager;
     }
 
-    public void Inserir(Cliente cliente){
+    public void inserir(Cliente cliente){
         this.manager.persist(cliente);
     }
 

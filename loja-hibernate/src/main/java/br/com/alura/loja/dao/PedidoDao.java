@@ -2,9 +2,11 @@ package br.com.alura.loja.dao;
 
 import br.com.alura.loja.model.Cliente;
 import br.com.alura.loja.model.Pedido;
+import br.com.alura.loja.vo.RelatorioVendasVO;
 import jakarta.persistence.EntityManager;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class PedidoDao {
     private EntityManager manager;
@@ -24,5 +26,19 @@ public class PedidoDao {
     public BigDecimal valorTotalVendido(){
         String jpql = "SELECT SUM(p.valorTotal) FROM Pedido p";
         return this.manager.createQuery(jpql, BigDecimal.class).getSingleResult();
+    }
+
+    public List<RelatorioVendasVO> relatorioDeVendas(){
+        String jpql = "SELECT new br.com.alura.loja.vo.RelatorioVendasVO " +
+                "(produto.nome, " +
+                "SUM(item.quantidade), " +
+                "MAX(pedido.data)) " +
+                "FROM Pedido pedido " +
+                "JOIN pedido.itens item " +
+                "JOIN item.produto produto " +
+                "GROUP BY produto.nome " +
+                "ORDER BY item.quantidade DESC";
+
+        return this.manager.createQuery(jpql, RelatorioVendasVO.class).getResultList();
     }
 }
