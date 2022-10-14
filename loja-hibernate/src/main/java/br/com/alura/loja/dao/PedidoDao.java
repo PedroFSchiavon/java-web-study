@@ -5,6 +5,7 @@ import br.com.alura.loja.model.Pedido;
 import br.com.alura.loja.vo.RelatorioVendasVO;
 import jakarta.persistence.EntityManager;
 
+import java.awt.font.TextHitInfo;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -40,5 +41,12 @@ public class PedidoDao {
                 "ORDER BY item.quantidade DESC";
 
         return this.manager.createQuery(jpql, RelatorioVendasVO.class).getResultList();
+    }
+
+    public Pedido pedidoComCliente(Long id){
+        String jpql = "SELECT p FROM Pedido p JOIN FETCH p.cliente WHERE p.id = :id";
+        return this.manager.createQuery(jpql, Pedido.class)
+                .setParameter("id", id)
+                .getSingleResult();
     }
 }

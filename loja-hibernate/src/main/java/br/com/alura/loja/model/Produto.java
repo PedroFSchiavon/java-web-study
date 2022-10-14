@@ -18,7 +18,7 @@ public class Produto {
     @Column(name = "local_date")
     private LocalDate localDate = LocalDate.now();
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Categoria categoria;
 
     public Produto(){}
@@ -28,6 +28,13 @@ public class Produto {
         this.descricao = descricao;
         this.preco = preco;
         this.categoria = categoria;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "id=" + id +
+                ", nome='" + nome + "}";
     }
 
     public LocalDate getLocalDate() {

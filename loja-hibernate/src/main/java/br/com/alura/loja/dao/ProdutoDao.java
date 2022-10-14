@@ -2,8 +2,10 @@ package br.com.alura.loja.dao;
 
 import br.com.alura.loja.model.Produto;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
@@ -53,5 +55,25 @@ public class ProdutoDao {
         return this.manager.createQuery(jpql, BigDecimal.class)
                 .setParameter(1, nome)
                 .getSingleResult();
+    }
+
+    public List<Produto> parametrosDinamicos(String nome, BigDecimal preco, LocalDate localDate){
+        String jpql = "SELECT p FROM Produto p WHERE 1=1";
+
+        if(nome != null && !nome.trim().isEmpty())
+            jpql += " AND p.nome = :nome";
+        if(preco != null)
+            jpql += " AND p.preco = :preco";
+        if(localDate != null)
+            jpql += " AND p.localDate = :localDate";
+
+        TypedQuery<Produto> query = manager.createQuery(jpql, Produto.class);
+        if(nome != null && !nome.trim().isEmpty())
+            query.setParameter("nome", nome);
+        if(preco != null)
+            query.setParameter("preco", preco);
+        if(localDate != null)
+            query.setParameter("localDate", localDate);
+        return query.getResultList();
     }
 }
