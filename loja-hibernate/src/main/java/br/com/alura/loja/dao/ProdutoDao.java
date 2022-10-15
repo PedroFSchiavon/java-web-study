@@ -3,6 +3,10 @@ package br.com.alura.loja.dao;
 import br.com.alura.loja.model.Produto;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -75,5 +79,22 @@ public class ProdutoDao {
         if(localDate != null)
             query.setParameter("localDate", localDate);
         return query.getResultList();
+    }
+
+    public List<Produto> parametrosDinamicosCriteria(String nome, BigDecimal preco, LocalDate localDate){
+        CriteriaBuilder criteriaBuilder = manager.getCriteriaBuilder();
+        CriteriaQuery<Produto> query = criteriaBuilder.createQuery(Produto.class);
+        Root<Produto> from = query.from(Produto.class);
+
+        Predicate and = criteriaBuilder.and();
+        if(nome != null && !nome.trim().isEmpty())
+            and = criteriaBuilder.and(and, criteriaBuilder.equal(from.get("nome"), nome));
+        if(preco != null)
+            and = criteriaBuilder.and(and, criteriaBuilder.equal(from.get("preco"), preco));
+        if(localDate != null)
+            and = criteriaBuilder.and(and, criteriaBuilder.equal(from.get("localDate"), localDate));
+
+        query.where(and);
+        return manager.createQuery(query).getResultList();
     }
 }

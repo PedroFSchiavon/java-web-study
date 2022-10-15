@@ -22,7 +22,7 @@ public class TestesLazys {
         ProdutoDao produtoDao = new ProdutoDao(manager);
 
         Pedido pedido = pedidoDao.pedidoComCliente(1l);
-        List<Produto> produtos = produtoDao.parametrosDinamicos("", null, LocalDate.now());
+        List<Produto> produtos = produtoDao.parametrosDinamicosCriteria("", null, LocalDate.now());
 
         manager.close();
 
