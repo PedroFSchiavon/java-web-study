@@ -1,4 +1,4 @@
-package model;
+package br.com.alura.springdata.model;
 
 import javax.persistence.*;
 
