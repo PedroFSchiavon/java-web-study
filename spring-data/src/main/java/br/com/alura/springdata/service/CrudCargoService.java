@@ -23,17 +23,7 @@ public class CrudCargoService {
         cargo.setDescricao(descricao);
 
         cargoRepository.save(cargo);
-    }
-
-    public void insert(Scanner scanner, Cargo cargo){
-        System.out.print("Descricao do cargo: ");
-        String descricao = scanner.next();
-        System.out.println();
-
-        Cargo cargoParaAtualizar = cargo;
-        cargo.setDescricao(descricao);
-
-        cargoRepository.save(cargo);
+        System.out.println("Salvo com sucesso!");
     }
 
     public void atualizar(Scanner scanner){
@@ -41,13 +31,15 @@ public class CrudCargoService {
         Integer id = scanner.nextInt();
         System.out.println();
 
-        Optional<Cargo> cargoOptional = cargoRepository.findById(id);
+        System.out.print("Descricao do cargo: ");
+        String descricao = scanner.next();
+        System.out.println();
 
-        if(cargoOptional.isPresent()){
-            Cargo cargo = cargoOptional.get();
-            insert(scanner, cargo);
-        }else{
-            System.out.println("Nenhum cargo localizado com esse ID.");
-        }
+        Cargo cargo = new Cargo();
+        cargo.setDescricao(descricao);
+        cargo.setId(id);
+
+        cargoRepository.save(cargo);
+        System.out.println("Atualizado com sucesso!");
     }
 }

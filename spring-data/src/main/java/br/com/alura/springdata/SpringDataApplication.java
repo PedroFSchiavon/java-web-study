@@ -31,17 +31,18 @@ public class SpringDataApplication implements CommandLineRunner {
             System.out.println("SAIR - 0");
             System.out.println("INSERIR - 1");
             System.out.println("ATUALIZAR - 2");
-            int opcao = scanner.nextInt();
+            Integer opcao = scanner.nextInt();
 
             switch (opcao){
-                case 0:
-                    controle = false;
-                    break;
                 case 1:
                     cargoService.insert(scanner);
                     break;
                 case 2:
                     cargoService.atualizar(scanner);
+                    break;
+                default:
+                    controle = false;
+                    break;
             }
 
         }
