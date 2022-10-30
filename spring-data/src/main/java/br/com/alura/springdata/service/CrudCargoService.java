@@ -4,7 +4,7 @@ import br.com.alura.springdata.model.Cargo;
 import br.com.alura.springdata.repository.CargoRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 import java.util.Scanner;
 
 @Service
@@ -26,7 +26,7 @@ public class CrudCargoService {
         System.out.println("Salvo com sucesso!");
     }
 
-    public void atualizar(Scanner scanner){
+    public void update(Scanner scanner){
         System.out.print("Id do cargo: ");
         Integer id = scanner.nextInt();
         System.out.println();
@@ -41,5 +41,20 @@ public class CrudCargoService {
 
         cargoRepository.save(cargo);
         System.out.println("Atualizado com sucesso!");
+    }
+
+    public void delete(Scanner scanner) {
+        System.out.print("Id do cargo: ");
+        Integer id = scanner.nextInt();
+        System.out.println();
+
+        cargoRepository.deleteById(id);
+        System.out.println("Deletado com sucesso!");
+
+    }
+
+    public void select(Scanner scanner) {
+        List<Cargo> cargos = (List<Cargo>) cargoRepository.findAll();
+        cargos.forEach(System.out::println);
     }
 }
