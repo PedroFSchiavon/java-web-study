@@ -10,11 +10,41 @@ import java.util.Scanner;
 @Service
 public class CrudCargoService {
     private CargoRepository cargoRepository;
+    private boolean controle = true;
     public CrudCargoService(CargoRepository cargoRepository){
         this.cargoRepository = cargoRepository;
     }
 
-    public void insert(Scanner scanner){
+    public void inicial(Scanner scanner){
+        while (controle){
+            System.out.println("MENU - Cargo");
+            System.out.println("SAIR - 0");
+            System.out.println("INSERIR - 1");
+            System.out.println("ATUALIZAR - 2");
+            System.out.println("DELETAR - 3");
+            System.out.println("EXIBIR CADASTRO - 4");
+            Integer opcao = scanner.nextInt();
+
+            switch (opcao){
+                case 1:
+                    insert(scanner);
+                    break;
+                case 2:
+                    update(scanner);
+                    break;
+                case 3:
+                    delete(scanner);
+                    break;
+                case 4:
+                    select();
+                    break;
+                default:
+                    controle = false;
+                    break;
+            }
+        }}
+
+    private void insert(Scanner scanner){
         System.out.print("Descricao do cargo: ");
         String descricao = scanner.next();
         System.out.println();
@@ -26,7 +56,7 @@ public class CrudCargoService {
         System.out.println("Salvo com sucesso!");
     }
 
-    public void update(Scanner scanner){
+    private void update(Scanner scanner){
         System.out.print("Id do cargo: ");
         Integer id = scanner.nextInt();
         System.out.println();
@@ -43,7 +73,7 @@ public class CrudCargoService {
         System.out.println("Atualizado com sucesso!");
     }
 
-    public void delete(Scanner scanner) {
+    private void delete(Scanner scanner) {
         System.out.print("Id do cargo: ");
         Integer id = scanner.nextInt();
         System.out.println();
@@ -53,7 +83,7 @@ public class CrudCargoService {
 
     }
 
-    public void select(Scanner scanner) {
+    private void select() {
         List<Cargo> cargos = (List<Cargo>) cargoRepository.findAll();
         cargos.forEach(System.out::println);
     }
