@@ -5,16 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "unidades")
+@Table(name = "unidade")
 public class Unidade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String descricao;
     private String endereco;
-    @OneToMany
-    @JoinColumn(referencedColumnName = "funcionarios")
-    private List<Funcionario> funcionarios = new ArrayList<>();
+    @ManyToMany(mappedBy = "unidade")
+    private final List<Funcionario> funcionarios = new ArrayList<>();
 
     public Unidade(){}
 

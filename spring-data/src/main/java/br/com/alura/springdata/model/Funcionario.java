@@ -1,5 +1,8 @@
 package br.com.alura.springdata.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -7,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "funcionarios")
+@Table(name = "funcionario")
 public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +20,15 @@ public class Funcionario {
     private String cpf;
     private BigDecimal salario;
     private LocalDate dataContratacao;
-    @ManyToOne
-    private Cargo cargo;
-    @OneToMany
-    @JoinColumn(referencedColumnName = "funcionarios")
-    private List<Unidade> unidades = new ArrayList<>();
+//    @ManyToOne
+//    @JoinColumn(name = "cargo_id", nullable = false)
+//    private Cargo cargo;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "funcionario_unidade",
+            joinColumns = {@JoinColumn(name = "funcionario_id")},
+            inverseJoinColumns = {@JoinColumn(name = "unidade_id")})
+    private final List<Unidade> unidades = new ArrayList<>();
 
     public Funcionario(){}
 
@@ -30,7 +37,7 @@ public class Funcionario {
         this.cpf = cpf;
         this.salario = salario;
         this.dataContratacao = LocalDate.now();
-        this.cargo = cargo;
+        //this.cargo = cargo;
     }
 
     public Integer getId() {
@@ -73,32 +80,32 @@ public class Funcionario {
         this.dataContratacao = dataContratacao;
     }
 
-    public Cargo getCargo() {
-        return cargo;
-    }
+//    public Cargo getCargo() {
+//        return cargo;
+//    }
+//
+//    public void setCargo(Cargo cargo) {
+//        this.cargo = cargo;
+//    }
 
-    public void setCargo(Cargo cargo) {
-        this.cargo = cargo;
-    }
+//    public List<Unidade> getUnidades() {
+//        return unidades;
+//    }
 
-    public List<Unidade> getUnidades() {
-        return unidades;
-    }
+//    public void setUnidades(Unidade unidade) {
+//        this.unidades.add(unidade);
+//    }
 
-    public void setUnidades(Unidade unidade) {
-        this.unidades.add(unidade);
-    }
-
-    @Override
-    public String toString() {
-        return "Funcionario{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cpf='" + cpf + '\'' +
-                ", salario=" + salario +
-                ", dataContratacao=" + dataContratacao +
-                ", cargo=" + cargo +
-                ", unidades=" + unidades +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Funcionario{" +
+//                "id=" + id +
+//                ", nome='" + nome + '\'' +
+//                ", cpf='" + cpf + '\'' +
+//                ", salario=" + salario +
+//                ", dataContratacao=" + dataContratacao +
+//                ", cargo=" + cargo +
+//                ", unidades=" + unidades +
+//                '}';
+//    }
 }

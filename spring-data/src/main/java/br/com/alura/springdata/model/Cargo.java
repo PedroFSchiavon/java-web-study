@@ -1,14 +1,25 @@
 package br.com.alura.springdata.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-@Table(name = "cargos")
+@Table(name = "cargo")
 public class Cargo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String descricao;
+    @OneToMany(mappedBy = "cargo")
+    private final List<Funcionario> funcionarios = new ArrayList<>();
+
+    public Cargo(){}
+
+    public Cargo(Integer id, String descricao) {
+        this.id = id;
+        this.descricao = descricao;
+    }
 
     public String getDescricao() {
         return descricao;
