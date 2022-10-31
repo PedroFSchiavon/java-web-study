@@ -12,7 +12,8 @@ public class Unidade {
     private Integer id;
     private String descricao;
     private String endereco;
-    @ManyToMany
+    @OneToMany
+    @JoinColumn(referencedColumnName = "funcionarios")
     private List<Funcionario> funcionarios = new ArrayList<>();
 
     public Unidade(){}

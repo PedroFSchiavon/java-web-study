@@ -43,7 +43,7 @@ public class SpringDataApplication implements CommandLineRunner {
                     funcionarioService.inicial(scanner);
                     break;
                 case 3:
-                    cargoService.delete(scanner);
+
                     break;
                 default:
                     controle = false;

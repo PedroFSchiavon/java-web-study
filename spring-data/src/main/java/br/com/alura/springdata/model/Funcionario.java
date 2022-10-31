@@ -19,7 +19,8 @@ public class Funcionario {
     private LocalDate dataContratacao;
     @ManyToOne
     private Cargo cargo;
-    @ManyToMany
+    @OneToMany
+    @JoinColumn(referencedColumnName = "funcionarios")
     private List<Unidade> unidades = new ArrayList<>();
 
     public Funcionario(){}
