@@ -35,20 +35,20 @@ public class SpringDataApplication implements CommandLineRunner {
             System.out.println("UNIDADE - 3");
             Integer opcao = scanner.nextInt();
 
-            switch (opcao){
-                case 1:
-                    cargoService.inicial(scanner);
-                    break;
-                case 2:
-                    funcionarioService.inicial(scanner);
-                    break;
-                case 3:
-
-                    break;
-                default:
-                    controle = false;
-                    break;
-            }
+//            switch (opcao){
+//                case 1:
+//                    cargoService.inicial(scanner);
+//                    break;
+//                case 2:
+//                    funcionarioService.inicial(scanner);
+//                    break;
+//                case 3:
+//
+//                    break;
+//                default:
+//                    controle = false;
+//                    break;
+//            }
 
         }
     }

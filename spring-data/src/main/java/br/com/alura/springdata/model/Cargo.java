@@ -12,20 +12,11 @@ public class Cargo {
     private Integer id;
     private String descricao;
     @OneToMany(mappedBy = "cargo")
-    private final List<Funcionario> funcionarios = new ArrayList<>();
+    private List<Funcionario> funcionarios = new ArrayList<>();
 
     public Cargo(){}
 
-    public Cargo(Integer id, String descricao) {
-        this.id = id;
-        this.descricao = descricao;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
+    public Cargo(String descricao) {
         this.descricao = descricao;
     }
 
@@ -37,9 +28,19 @@ public class Cargo {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "id=" + id +
-                ", descricao='" + descricao + '\'';
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(Funcionario funcionario) {
+        this.funcionarios.add(funcionario);
     }
 }

@@ -61,7 +61,7 @@ public class CrudFuncionarioService {
         System.out.print("Id: ");
         Integer id = scanner.nextInt();
         System.out.println();
-        
+
         funcionarioRepository.deleteById(id);
 
         System.out.println("FUncionario deletado");
@@ -86,11 +86,11 @@ public class CrudFuncionarioService {
 
         Funcionario funcionario = new Funcionario(nome, cpf, salario, cargo);
         funcionario.setId(id);
-        
+
         funcionarioRepository.save(funcionario);
 
         System.out.println("Funcionario atualizado");
-        
+
     }
 
     private void insert(Scanner scanner) {
@@ -108,7 +108,7 @@ public class CrudFuncionarioService {
         Cargo cargo = cargoOptional.get();
 
         Funcionario funcionario = new Funcionario(nome, cpf, salario, cargo);
-        
+
         funcionarioRepository.save(funcionario);
 
         System.out.println("Funcionario salvo com sucesso.");

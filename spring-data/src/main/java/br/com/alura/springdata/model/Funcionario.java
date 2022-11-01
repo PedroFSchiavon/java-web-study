@@ -16,28 +16,25 @@ public class Funcionario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nome;
-    @Column(length = 11)
     private String cpf;
     private BigDecimal salario;
     private LocalDate dataContratacao;
-//    @ManyToOne
-//    @JoinColumn(name = "cargo_id", nullable = false)
-//    private Cargo cargo;
-    @ManyToMany(cascade = {CascadeType.ALL})
-    @JoinTable(
-            name = "funcionario_unidade",
-            joinColumns = {@JoinColumn(name = "funcionario_id")},
-            inverseJoinColumns = {@JoinColumn(name = "unidade_id")})
-    private final List<Unidade> unidades = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "cargo_id", nullable = false)
+    private Cargo cargo;
+    @Fetch(FetchMode.SELECT)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "funcionario_unidade", joinColumns = {@JoinColumn(name = "id_funcionario")},
+    inverseJoinColumns = {@JoinColumn(name = "id_unidade")})
+    private List<Unidade> unidades = new ArrayList<>();
 
     public Funcionario(){}
-
-    public Funcionario(String nome, String cpf, BigDecimal salario, Cargo cargo) {
+    public Funcionario(String nome, String cpf, BigDecimal salario,  Cargo cargo) {
         this.nome = nome;
         this.cpf = cpf;
         this.salario = salario;
         this.dataContratacao = LocalDate.now();
-        //this.cargo = cargo;
+        this.cargo = cargo;
     }
 
     public Integer getId() {
@@ -80,32 +77,19 @@ public class Funcionario {
         this.dataContratacao = dataContratacao;
     }
 
-//    public Cargo getCargo() {
-//        return cargo;
-//    }
-//
-//    public void setCargo(Cargo cargo) {
-//        this.cargo = cargo;
-//    }
+    public Cargo getCargo() {
+        return cargo;
+    }
 
-//    public List<Unidade> getUnidades() {
-//        return unidades;
-//    }
+    public void setCargo(Cargo cargo) {
+        this.cargo = cargo;
+    }
 
-//    public void setUnidades(Unidade unidade) {
-//        this.unidades.add(unidade);
-//    }
+    public List<Unidade> getUnidades() {
+        return unidades;
+    }
 
-//    @Override
-//    public String toString() {
-//        return "Funcionario{" +
-//                "id=" + id +
-//                ", nome='" + nome + '\'' +
-//                ", cpf='" + cpf + '\'' +
-//                ", salario=" + salario +
-//                ", dataContratacao=" + dataContratacao +
-//                ", cargo=" + cargo +
-//                ", unidades=" + unidades +
-//                '}';
-//    }
+    public void setUnidades(Unidade unidade) {
+        this.unidades.add(unidade);
+    }
 }

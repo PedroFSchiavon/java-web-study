@@ -12,14 +12,22 @@ public class Unidade {
     private Integer id;
     private String descricao;
     private String endereco;
-    @ManyToMany(mappedBy = "unidade")
-    private final List<Funcionario> funcionarios = new ArrayList<>();
+    @ManyToMany(mappedBy = "unidades")
+    private List<Funcionario> funcionarios = new ArrayList<>();
 
     public Unidade(){}
 
     public Unidade(String descricao, String endereco) {
         this.descricao = descricao;
         this.endereco = endereco;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDescricao() {
@@ -44,13 +52,5 @@ public class Unidade {
 
     public void setFuncionarios(Funcionario funcionario) {
         this.funcionarios.add(funcionario);
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 }
