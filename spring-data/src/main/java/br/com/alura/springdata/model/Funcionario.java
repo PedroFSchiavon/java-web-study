@@ -19,10 +19,10 @@ public class Funcionario {
     private String cpf;
     private BigDecimal salario;
     private LocalDate dataContratacao;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "cargo_id", nullable = false)
     private Cargo cargo;
-    @Fetch(FetchMode.SELECT)
+    @Fetch(FetchMode.JOIN)
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "funcionario_unidade", joinColumns = {@JoinColumn(name = "id_funcionario")},
     inverseJoinColumns = {@JoinColumn(name = "id_unidade")})
@@ -91,5 +91,17 @@ public class Funcionario {
 
     public void setUnidades(Unidade unidade) {
         this.unidades.add(unidade);
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", salario=" + salario +
+                ", dataContratacao=" + dataContratacao +
+                ", cargo=" + cargo +
+                '}';
     }
 }

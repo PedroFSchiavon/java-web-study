@@ -12,7 +12,7 @@ public class Unidade {
     private Integer id;
     private String descricao;
     private String endereco;
-    @ManyToMany(mappedBy = "unidades")
+    @ManyToMany(mappedBy = "unidades", fetch = FetchType.EAGER)
     private List<Funcionario> funcionarios = new ArrayList<>();
 
     public Unidade(){}
@@ -52,5 +52,15 @@ public class Unidade {
 
     public void setFuncionarios(Funcionario funcionario) {
         this.funcionarios.add(funcionario);
+    }
+
+    @Override
+    public String toString() {
+        return "Unidade{" +
+                "id=" + id +
+                ", descricao='" + descricao + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", funcionarios=[" + funcionarios +
+                '}';
     }
 }

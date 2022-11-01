@@ -11,7 +11,7 @@ public class Cargo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String descricao;
-    @OneToMany(mappedBy = "cargo")
+    @OneToMany(mappedBy = "cargo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Funcionario> funcionarios = new ArrayList<>();
 
     public Cargo(){}
@@ -42,5 +42,13 @@ public class Cargo {
 
     public void setFuncionarios(Funcionario funcionario) {
         this.funcionarios.add(funcionario);
+    }
+
+    @Override
+    public String toString() {
+        return "Cargo{" +
+                "id=" + id +
+                ", descricao='" + descricao + '\'' +
+                '}';
     }
 }
