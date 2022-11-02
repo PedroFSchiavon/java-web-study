@@ -17,6 +17,7 @@ public class SpringDataApplication implements CommandLineRunner {
     private final CrudUnidadeService unidadeService;
     private final RelatoriosService relatoriosService;
     private boolean controle = true;
+    int opcao;
 
     public SpringDataApplication(CrudCargoService cargoService, CrudFuncionarioService funcionarioService,
                                  CrudUnidadeService unidadeService, RelatoriosService relatoriosService){
@@ -34,6 +35,7 @@ public class SpringDataApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
+
         while (controle){
             System.out.println("MENU");
             System.out.println("SAIR - 0");
@@ -41,7 +43,7 @@ public class SpringDataApplication implements CommandLineRunner {
             System.out.println("FUNCIONARIO - 2");
             System.out.println("UNIDADE - 3");
             System.out.println("RELATORIO - 4");
-            int opcao = scanner.nextInt();
+            opcao = scanner.nextInt();
 
             switch (opcao){
                 case 1:

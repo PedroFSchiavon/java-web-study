@@ -42,7 +42,9 @@ public class CrudCargoService {
                     controle = false;
                     break;
             }
-        }}
+        }
+        controle = true;
+    }
 
     private void insert(Scanner scanner){
         System.out.print("Descricao do cargo: ");

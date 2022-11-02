@@ -18,13 +18,13 @@ public class CrudUnidadeService {
     private boolean controle = true;
 
     public CrudUnidadeService(UnidadeRepository unidadeRepository,
-                              FuncionarioRepository funcionarioRepository){
+                              FuncionarioRepository funcionarioRepository) {
         this.unidadeRepository = unidadeRepository;
-        this.funcionarioRepository =funcionarioRepository;
+        this.funcionarioRepository = funcionarioRepository;
     }
 
-    public void inicial(Scanner scanner){
-        while (controle){
+    public void inicial(Scanner scanner) {
+        while (controle) {
             System.out.println("MENU - UNIDADE");
             System.out.println("SAIR - 0");
             System.out.println("INSERIR - 1");
@@ -33,7 +33,7 @@ public class CrudUnidadeService {
             System.out.println("EXIBIR CADASTRO - 4");
             int opcao = scanner.nextInt();
 
-            switch (opcao){
+            switch (opcao) {
                 case 1:
                     insert(scanner);
                     break;
@@ -50,7 +50,9 @@ public class CrudUnidadeService {
                     controle = false;
                     break;
             }
-        }}
+        }
+        controle = true;
+    }
 
     private void select() {
         Iterable<Unidade> unidades = unidadeRepository.findAll();

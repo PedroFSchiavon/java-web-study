@@ -49,6 +49,7 @@ public class CrudFuncionarioService {
                     break;
             }
         }
+        controle = true;
     }
 
     private void select() {
