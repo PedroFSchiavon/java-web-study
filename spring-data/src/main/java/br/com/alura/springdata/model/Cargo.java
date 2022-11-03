@@ -11,7 +11,7 @@ public class Cargo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String descricao;
-    @OneToMany(mappedBy = "cargo", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "cargo", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Funcionario> funcionarios = new ArrayList<>();
 
     public Cargo(){}

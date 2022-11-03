@@ -6,12 +6,14 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
 @Service
 public class RelatoriosService {
     private boolean controle = true;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private final FuncionarioRepository funcionarioRepository;
 
     public RelatoriosService(FuncionarioRepository funcionarioRepository) {
@@ -23,7 +25,7 @@ public class RelatoriosService {
             System.out.println("MENU - RELATORIO");
             System.out.println("SAIR - 0");
             System.out.println("PESQUISA POR NOME - 1");
-            System.out.println("PESQUISA NOME, CONTRATACAO, MAIOR SALARIO");
+            System.out.println("PESQUISA NOME, CONTRATACAO, MAIOR SALARIO - 2");
             int opcao = scanner.nextInt();
 
             switch (opcao) {
@@ -58,7 +60,7 @@ public class RelatoriosService {
         BigDecimal salario = new BigDecimal(scanner.next());
         System.out.println();
         System.out.print("Contratacao: ");
-        LocalDate contratacao = LocalDate.parse(scanner.next());
+        LocalDate contratacao = LocalDate.parse(scanner.next(), formatter);
         System.out.println();
 
         List<Funcionario> funcionarios = funcionarioRepository

@@ -12,7 +12,7 @@ public class Unidade {
     private Integer id;
     private String descricao;
     private String endereco;
-    @ManyToMany(mappedBy = "unidades", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "unidades", fetch = FetchType.LAZY)
     private List<Funcionario> funcionarios = new ArrayList<>();
 
     public Unidade(){}
