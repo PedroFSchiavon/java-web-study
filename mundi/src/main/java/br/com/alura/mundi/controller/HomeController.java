@@ -18,7 +18,7 @@ public class HomeController {
     public HomeController(PedidoService pedidoService){
         this.pedidoService = pedidoService;
     }
-    @GetMapping("/home")
+    @GetMapping("home")
     public String home(Model model){
         Pedido pedido = new Pedido();
         pedido.setNomeProduto("Echo Dot (4ª geração)");
