@@ -1,5 +1,6 @@
 package br.com.alura.mundi.controller;
 
+import br.com.alura.mundi.dao.PedidoDao;
 import br.com.alura.mundi.model.Pedido;
 import br.com.alura.mundi.repository.PedidoRepository;
 import org.springframework.stereotype.Controller;
@@ -21,21 +22,10 @@ public class PedidoController {
         return "pedido/formulario";
     }
     @PostMapping("novo")
-    public String novoProduto(Model model){
-        String nomeProduto = (String) model.getAttribute("nomeProduto");
-        String urlProduto = (String) model.getAttribute("urlProduto");
-        String urlImagem = (String) model.getAttribute("urlImagem");
-        String descricao = (String) model.getAttribute("descricao");
+    public String novoProduto(PedidoDao pedidoDao){
+        Pedido pedido = pedidoDao.toPedido();
+        pedidoRepository.save(pedido);
 
-        Pedido pedido = new Pedido();
-        pedido.setNomeProduto(nomeProduto);
-        pedido.setUrlProduto(urlProduto);
-        pedido.setUrlImagem(urlImagem);
-        if(!descricao.isEmpty()){
-            pedido.setDescricao(descricao);
-        }
-
-
-        return "home";
+        return "pedido/formulario";
     }
 }
