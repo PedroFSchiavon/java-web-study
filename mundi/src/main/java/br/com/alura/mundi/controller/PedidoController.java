@@ -4,7 +4,6 @@ import br.com.alura.mundi.dao.PedidoDao;
 import br.com.alura.mundi.model.Pedido;
 import br.com.alura.mundi.repository.PedidoRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
